@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #050507;
+    color: #f4f4f5;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ===== Keyframe Animations ===== */
+
+@keyframes ticker-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes ticker-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0px,   0px) scale(1);    }
+  25%       { transform: translate(40px, -50px) scale(1.05); }
+  50%       { transform: translate(-20px,-80px) scale(0.95); }
+  75%       { transform: translate(-50px,-30px) scale(1.02); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0px,  0px); }
+  33%       { transform: translate(-30px, 40px); }
+  66%       { transform: translate(20px,  25px); }
+}
+
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0px,  0px) scale(1);    }
+  50%       { transform: translate(25px,-35px) scale(1.1); }
+}
+
+@keyframes scan-line {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { transform: translateY(2000%); opacity: 0; }
+}
+
+@keyframes shimmer-text {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes count-up-glow {
+  0%, 100% { text-shadow: 0 0 0px rgba(251,191,36,0); }
+  50%       { text-shadow: 0 0 20px rgba(251,191,36,0.6); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes film-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+@keyframes badge-ping {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* ===== Utility Classes ===== */
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #fbbf24 60%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-animated {
+    background: linear-gradient(
+      90deg,
+      #f59e0b 0%,
+      #fbbf24 20%,
+      #ffffff 40%,
+      #fcd34d 60%,
+      #fbbf24 80%,
+      #f59e0b 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-text 4s ease-in-out infinite;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 40px rgba(251,191,36,0.2), 0 0 80px rgba(251,191,36,0.1);
+  }
+
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.6);
+    border-color: rgba(251,191,36,0.3);
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .scale-in.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-black text-white mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-2 bg-amber-400/10 border border-amber-400/30 text-amber-400 px-4 py-1.5 rounded-full text-sm font-medium mb-6;
+  }
+
+  /* Ticker */
+  .ticker-track-left {
+    animation: ticker-left var(--ticker-speed, 35s) linear infinite;
+  }
+
+  .ticker-track-right {
+    animation: ticker-right var(--ticker-speed, 40s) linear infinite;
+  }
+
+  .ticker-wrap:hover .ticker-track-left,
+  .ticker-wrap:hover .ticker-track-right {
+    animation-play-state: paused;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: #050507; }
+::-webkit-scrollbar-thumb  { background: #27272a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
