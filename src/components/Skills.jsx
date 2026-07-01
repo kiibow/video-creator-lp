@@ -42,8 +42,17 @@ const equipment = [
   { name: 'DJI Mavic 3 Pro Cine', desc: '空撮ドローン（4K/60fps）', icon: '🚁' },
   { name: 'DJI Avata 2', desc: 'FPVドローン', icon: '🎮' },
   { name: 'DJI RS3 Pro', desc: '3軸ジンバルスタビライザー', icon: '🎥' },
+  { name: 'Atomos SHOGUN', desc: '外部モニター・レコーダー（ProRes RAW収録）', icon: '📺' },
+  { name: 'Tilta Nucleus M2', desc: 'ワイヤレスフォローフォーカスシステム', icon: '🎯' },
+  { name: '三脚 / 一脚', desc: '高精度カーボン三脚・一脚（スポーツ・スタジオ対応）', icon: '📐' },
   { name: 'Nanlite / Aputure', desc: 'LEDライティング', icon: '💡' },
   { name: 'Sennheiser MKH416/600', desc: 'プロフェッショナルマイク', icon: '🎙' },
+]
+
+const workstation = [
+  { name: '3面マルチモニター', desc: '大型デュアル＋サブの3画面環境で編集効率を最大化', icon: '🖥️' },
+  { name: 'DaVinci Resolve Mini Panel', desc: 'ハードウェアカラーパネルによる高精度グレーディング', icon: '🎛️' },
+  { name: 'ペンタブレット', desc: 'マスク・ロトスコープ・グラフィック編集に活用', icon: '✏️' },
 ]
 
 const levelLabel = ['', '入門', '基礎', '経験', '上級', '得意']
@@ -90,10 +99,10 @@ function EquipmentItem({ eq, delay }) {
       className={`fade-up bg-[#0d0d14] border border-zinc-800/60 rounded-lg px-4 py-3.5 flex items-center gap-3 ${isVisible ? 'visible' : ''}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <span className="text-xl flex-shrink-0">{eq.icon}</span>
+      <span className="text-2xl flex-shrink-0">{eq.icon}</span>
       <div>
-        <div className="text-zinc-200 text-sm font-semibold">{eq.name}</div>
-        <div className="text-zinc-600 text-xs mt-0.5">{eq.desc}</div>
+        <div className="text-zinc-200 text-base font-semibold">{eq.name}</div>
+        <div className="text-zinc-500 text-sm mt-0.5">{eq.desc}</div>
       </div>
     </div>
   )
@@ -130,6 +139,18 @@ export default function Skills() {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {equipment.map((eq, i) => (
+              <EquipmentItem key={i} eq={eq} delay={i * 60} />
+            ))}
+          </div>
+        </div>
+
+        {/* Workstation */}
+        <div className="mt-8">
+          <h3 className="text-zinc-400 text-sm font-semibold tracking-widest uppercase text-center mb-6">
+            作業環境
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {workstation.map((eq, i) => (
               <EquipmentItem key={i} eq={eq} delay={i * 60} />
             ))}
           </div>
