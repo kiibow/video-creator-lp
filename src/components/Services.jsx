@@ -44,11 +44,18 @@ const services = [
     img: 'https://images.unsplash.com/photo-1616161560417-66d4db5892ec?w=600&q=80&auto=format&fit=crop',
   },
   {
-    icon: '🏎️',
-    title: '車両・バイク撮影',
-    desc: '専用のカメラカーや大型バイクを活用し、追走・並走・POV（主観）などダイナミックな走行シーンを安全かつ高品質に撮影します。',
-    tags: ['カメラカー', '並走撮影', 'モビリティ', 'POV'],
-    img: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80&auto=format&fit=crop',
+    icon: '🚗',
+    title: 'カメラカー撮影（アルファード）',
+    desc: 'アルファードにシネマカメラを搭載した専用カメラカーで追走・並走撮影。ダイナミックな走行シーンをプロクオリティで収録します。',
+    tags: ['カメラカー', 'アルファード', '並走撮影', '追走'],
+    img: '/thumb-alphard.png',
+  },
+  {
+    icon: '🏍️',
+    title: 'バイク搭載カメラ撮影',
+    desc: '大型バイクにシネマカメラを直接マウント。車が入れない場所や高速走行でも機動的に撮影できます。',
+    tags: ['バイク撮影', 'カメラマウント', 'POV', 'モビリティ'],
+    img: '/thumb-kawasaki.png',
   },
   {
     icon: '📊',
